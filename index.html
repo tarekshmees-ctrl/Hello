@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صورة تذكارية 😂</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+}
+video, canvas {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+button {
+    padding: 14px 25px;
+    margin: 8px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>😂 مفاجأة!</h2>
+<p>إذا أردت التحميل، اسمح للصفحة باستخدام الميكريفون.</p>
+
+<button onclick="startCamera()">تشغيل الكاميرا</button>
+
+<br>
+
+<video id="video" autoplay playsinline style="display:none;"></video>
+
+<br>
+
+<button id="capture" onclick="takePhoto()" style="display:none;">
+التقاط الصورة
+</button>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<script>
+let stream;
+
+async function startCamera() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: true
+        });
+
+        const video = document.getElementById("video");
+        video.srcObject = stream;
+        video.style.display = "block";
+
+        document.getElementById("capture").style.display = "inline-block";
+
+    } catch (error) {
+        alert("لم يتم السماح باستخدام الكاميرا.");
+    }
+}
+
+function takePhoto() {
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    canvas.getContext("2d").drawImage(
+        video,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    aler 😂");
+}
+</script>
+
+</body>
+</html>
